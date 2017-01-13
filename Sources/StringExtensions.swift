@@ -29,13 +29,13 @@ public extension String {
     func camelize() -> String {
         let source = clean(with: " ", allOf: "-", "_")
         if source.characters.contains(" ") {
-			let first = self[self.startIndex...self.index(after: startIndex)] //source.substringToIndex(source.index(after: startIndex))
+			let first = self[self.startIndex] //source.substringToIndex(source.index(after: startIndex))
 			let cammel = source.capitalized.replacingOccurrences(of: " ", with: "")
 //            let cammel = String(format: "%@", strip)
             let rest = String(cammel.characters.dropFirst())
             return "\(first)\(rest)"
         } else {
-			let first = source[self.startIndex...self.index(after: startIndex)].lowercased()
+			let first = String(source[self.startIndex]).lowercased()
             let rest = String(source.characters.dropFirst())
             return "\(first)\(rest)"
         }
